@@ -17,6 +17,7 @@
     --max: 880px;
     --serif: Georgia, "Times New Roman", serif;
     --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --particle-rgb: 31,78,121;
   }
   [data-theme="dark"] {
     --bg: #11151a;
@@ -26,6 +27,7 @@
     --line: #262d36;
     --accent: #7eb6e6;
     --accent-soft: #1a2733;
+    --particle-rgb: 126,182,230;
   }
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
@@ -59,18 +61,41 @@
     border-radius: 999px; width: 34px; height: 34px; cursor: pointer; font-size: 15px;
   }
 
-  /* Hero */
-  .hero { display: grid; grid-template-columns: 150px 1fr; gap: 32px; align-items: center; padding: 56px 0 28px; }
-  .avatar {
+  /* Background network canvas */
+  #bg-canvas { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
+  .page-content { position: relative; z-index: 1; background: var(--bg); }
+
+  /* Intro (full-height hero) */
+  .intro {
+    position: relative; z-index: 1;
+    min-height: 100vh; box-sizing: border-box;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center; padding: 24px;
+  }
+  .intro h1 { font-family: var(--serif); font-weight: 700; font-size: 48px; margin: 0 0 8px; letter-spacing: -0.01em; }
+  .intro .intro-role { color: var(--muted); font-size: 18px; font-style: italic; margin: 0 0 20px; }
+  .intro .links { justify-content: center; }
+  .links { display: flex; gap: 14px; flex-wrap: wrap; font-size: 15px; }
+  .links a { color: var(--muted); }
+  .scroll-indicator {
+    position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%);
+    border: none; background: none; color: var(--muted); font-family: var(--sans);
+    font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer;
+    animation: intro-bounce 2s ease-in-out infinite;
+  }
+  .scroll-indicator:hover { color: var(--accent); }
+  @keyframes intro-bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(6px); }
+  }
+
+  /* About photo + bio grid */
+  .about-grid { display: grid; grid-template-columns: 150px 1fr; gap: 32px; align-items: start; }
+  .about-photo {
     width: 150px; height: 150px; border-radius: 50%;
     background: var(--accent-soft) url('assets/profile.jpg') center/cover no-repeat;
     border: 1px solid var(--line);
-    display: grid; place-items: center; color: var(--accent); font-family: var(--serif); font-size: 40px;
   }
-  .hero h1 { font-family: var(--serif); font-size: 34px; margin: 0 0 6px; line-height: 1.15; }
-  .hero .role { color: var(--muted); margin: 0 0 14px; font-size: 17px; }
-  .links { display: flex; gap: 14px; flex-wrap: wrap; font-size: 15px; }
-  .links a { color: var(--muted); }
 
   /* Sections */
   section { padding: 34px 0; border-top: 1px solid var(--line); scroll-margin-top: 76px; }
@@ -129,7 +154,8 @@
   footer { padding: 36px 0 60px; color: var(--muted); font-size: 14px; border-top: 1px solid var(--line); }
 
   @media (max-width: 640px) {
-    .hero { grid-template-columns: 1fr; text-align: center; justify-items: center; padding-top: 36px; }
+    .intro h1 { font-size: 34px; }
+    .about-grid { grid-template-columns: 1fr; text-align: center; justify-items: center; }
     .grid { grid-template-columns: 1fr; }
     .row { grid-template-columns: 1fr; gap: 2px; }
     .nav-links { display: none; }
@@ -152,57 +178,66 @@
   </div>
 </header>
 
+<canvas id="bg-canvas" aria-hidden="true"></canvas>
+<section class="intro">
+  <div class="intro-content">
+    <h1>Vincent Winterhager</h1>
+    <p class="intro-role">Policy Officer · Chief Economist Unit (DG BUDG), European Commission<br/>Lecturer · Hertie School</p>
+    <div class="links">
+      <a href="mailto:vincentwinterhager@gmail.com">✉ Email</a>
+      <a href="#cv">⤓ CV</a>
+      <a href="https://www.linkedin.com/in/vincent-winterhager-7741a8aa/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://www.hertie-school.org/en/research/faculty-and-researchers/profile/person/winterhager" target="_blank" rel="noopener">Hertie profile</a>
+    </div>
+  </div>
+  <button class="scroll-indicator" id="scrollIndicator" aria-label="Scroll to content">Scroll ↓</button>
+</section>
+
+<div class="page-content">
 <main class="wrap">
 
-  <!-- ABOUT / HERO -->
-  <section id="about" style="border-top:none;">
-    <div class="hero">
-      <div class="avatar" role="img" aria-label="Vincent Winterhager"></div>
+  <!-- ABOUT -->
+  <section id="about">
+    <h2>About</h2>
+    <div class="about-grid">
+      <div class="about-photo" role="img" aria-label="Vincent Winterhager"></div>
       <div>
-        <h1>Vincent Winterhager</h1>
-        <p class="role">Policy Officer · Chief Economist Unit (DG BUDG), European Commission<br/>Lecturer · Hertie School</p>
-        <div class="links">
-          <a href="mailto:vincentwinterhager@gmail.com">✉ Email</a>
-          <a href="#cv">⤓ CV</a>
-          <a href="https://www.linkedin.com/in/vincent-winterhager-7741a8aa/" target="_blank" rel="noopener">LinkedIn</a>
-          <a href="https://www.hertie-school.org/en/research/faculty-and-researchers/profile/person/winterhager" target="_blank" rel="noopener">Hertie profile</a>
+        <p class="lead">
+          I am an economist and policy officer working at the intersection of European fiscal policy,
+          political economy, and applied econometrics — currently in the Chief Economist Unit of
+          DG BUDG, and teaching the political economy of the EU budget at the Hertie School.
+        </p>
+        <div id="aboutMore" class="about-more" hidden>
+          <p>
+            At the European Commission I work in the Chief Economist team of DG BUDG, strengthening the
+            econometric evidence base on the EU budget together with the Joint Research Centre to inform
+            decision-makers ahead of the next Multiannual Financial Framework (MFF). Previously, in the
+            Ukraine Directorate of DG ENEST, I coordinated the G7+ Energy Group for Ukraine, led economic
+            analysis on energy-sector state-owned enterprises, the impact of CBAM on Ukraine's industry,
+            and public debt and inflation, and was responsible for the energy and climate reforms of the
+            Ukraine Facility as well as the Rapid Damage and Needs Assessment with the World Bank. Before
+            that, I worked on the Recovery and Resilience Facility (RRF) in the Secretariat General,
+            handling the country plans of Estonia and Belgium and coordinating REPowerEU negotiations.
+          </p>
+          <p>
+            Alongside the Commission, I teach a graduate seminar at the Hertie School on the political
+            economy of common debt in the EU, the future of the MFF, and diverging productivity regimes
+            across the Union — co-taught with Johannes Lindner of the Jacques Delors Centre. I hold a
+            dual master's degree from the London School of Economics (MPA) and the Hertie School (MPP),
+            and I am an alumnus and fellow of the Friedrich Ebert Foundation.
+          </p>
+          <div class="chips">
+            <span class="chip">EU budget &amp; MFF</span>
+            <span class="chip">Common debt &amp; EU bonds</span>
+            <span class="chip">European Monetary Union</span>
+            <span class="chip">Fiscal policy</span>
+            <span class="chip">Energy &amp; climate policy</span>
+            <span class="chip">Econometrics &amp; data science</span>
+          </div>
         </div>
+        <button class="read-more" id="aboutToggle" aria-expanded="false" aria-controls="aboutMore">Read more →</button>
       </div>
     </div>
-    <p class="lead">
-      I am an economist and policy officer working at the intersection of European fiscal policy,
-      political economy, and applied econometrics — currently in the Chief Economist Unit of
-      DG BUDG, and teaching the political economy of the EU budget at the Hertie School.
-    </p>
-    <div id="aboutMore" class="about-more" hidden>
-      <p>
-        At the European Commission I work in the Chief Economist team of DG BUDG, strengthening the
-        econometric evidence base on the EU budget together with the Joint Research Centre to inform
-        decision-makers ahead of the next Multiannual Financial Framework (MFF). Previously, in the
-        Ukraine Directorate of DG ENEST, I coordinated the G7+ Energy Group for Ukraine, led economic
-        analysis on energy-sector state-owned enterprises, the impact of CBAM on Ukraine's industry,
-        and public debt and inflation, and was responsible for the energy and climate reforms of the
-        Ukraine Facility as well as the Rapid Damage and Needs Assessment with the World Bank. Before
-        that, I worked on the Recovery and Resilience Facility (RRF) in the Secretariat General,
-        handling the country plans of Estonia and Belgium and coordinating REPowerEU negotiations.
-      </p>
-      <p>
-        Alongside the Commission, I teach a graduate seminar at the Hertie School on the political
-        economy of common debt in the EU, the future of the MFF, and diverging productivity regimes
-        across the Union — co-taught with Johannes Lindner of the Jacques Delors Centre. I hold a
-        dual master's degree from the London School of Economics (MPA) and the Hertie School (MPP),
-        and I am an alumnus and fellow of the Friedrich Ebert Foundation.
-      </p>
-      <div class="chips">
-        <span class="chip">EU budget &amp; MFF</span>
-        <span class="chip">Common debt &amp; EU bonds</span>
-        <span class="chip">European Monetary Union</span>
-        <span class="chip">Fiscal policy</span>
-        <span class="chip">Energy &amp; climate policy</span>
-        <span class="chip">Econometrics &amp; data science</span>
-      </div>
-    </div>
-    <button class="read-more" id="aboutToggle" aria-expanded="false" aria-controls="aboutMore">Read more →</button>
   </section>
 
   <!-- PUBLICATIONS -->
@@ -333,6 +368,7 @@
 <footer class="wrap">
   © <span id="year"></span> Vincent Winterhager. Views expressed on this site are my own and do not represent those of the European Commission.
 </footer>
+</div>
 
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
@@ -350,6 +386,88 @@
     aboutToggle.setAttribute('aria-expanded', String(!expanded));
     aboutToggle.textContent = expanded ? 'Read more →' : 'Show less ←';
   });
+
+  document.getElementById('scrollIndicator').addEventListener('click', () => {
+    document.querySelector('main').scrollIntoView({ behavior: 'smooth' });
+  });
+
+  // Background network animation
+  (function () {
+    const canvas = document.getElementById('bg-canvas');
+    const ctx = canvas.getContext('2d');
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const NODE_COUNT = 70;
+    const LINK_DIST = 130;
+    let w, h, nodes, rgb;
+
+    function particleRgb() {
+      return getComputedStyle(document.documentElement).getPropertyValue('--particle-rgb').trim();
+    }
+
+    function resize() {
+      w = canvas.width = window.innerWidth;
+      h = canvas.height = window.innerHeight;
+    }
+
+    function makeNodes() {
+      nodes = Array.from({ length: NODE_COUNT }, () => ({
+        x: Math.random() * w,
+        y: Math.random() * h,
+        vx: reduceMotion ? 0 : (Math.random() - 0.5) * 0.25,
+        vy: reduceMotion ? 0 : (Math.random() - 0.5) * 0.25,
+      }));
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, w, h);
+      for (const n of nodes) {
+        n.x += n.vx;
+        n.y += n.vy;
+        if (n.x < 0 || n.x > w) n.vx *= -1;
+        if (n.y < 0 || n.y > h) n.vy *= -1;
+        n.x = Math.min(Math.max(n.x, 0), w);
+        n.y = Math.min(Math.max(n.y, 0), h);
+      }
+      for (let i = 0; i < nodes.length; i++) {
+        for (let j = i + 1; j < nodes.length; j++) {
+          const dx = nodes[i].x - nodes[j].x;
+          const dy = nodes[i].y - nodes[j].y;
+          const dist = Math.hypot(dx, dy);
+          if (dist < LINK_DIST) {
+            ctx.strokeStyle = `rgba(${rgb},${0.5 * (1 - dist / LINK_DIST)})`;
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(nodes[i].x, nodes[i].y);
+            ctx.lineTo(nodes[j].x, nodes[j].y);
+            ctx.stroke();
+          }
+        }
+      }
+      for (const n of nodes) {
+        ctx.fillStyle = `rgba(${rgb},0.9)`;
+        ctx.beginPath();
+        ctx.arc(n.x, n.y, 1.8, 0, Math.PI * 2);
+        ctx.fill();
+      }
+      if (!reduceMotion) requestAnimationFrame(draw);
+    }
+
+    rgb = particleRgb();
+    resize();
+    makeNodes();
+    draw();
+
+    window.addEventListener('resize', () => {
+      resize();
+      makeNodes();
+      if (reduceMotion) draw();
+    });
+
+    btn.addEventListener('click', () => {
+      rgb = particleRgb();
+      if (reduceMotion) draw();
+    });
+  })();
 </script>
 </body>
 </html>
