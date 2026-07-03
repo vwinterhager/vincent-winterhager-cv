@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -73,7 +73,7 @@
   .links a { color: var(--muted); }
 
   /* Sections */
-  section { padding: 34px 0; border-top: 1px solid var(--line); }
+  section { padding: 34px 0; border-top: 1px solid var(--line); scroll-margin-top: 76px; }
   section h2 {
     font-family: var(--serif); font-size: 24px; margin: 0 0 18px;
     display: flex; align-items: baseline; gap: 10px;
@@ -85,6 +85,15 @@
   /* Interests chips */
   .chips { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
   .chip { font-size: 13px; color: var(--accent); background: var(--accent-soft); padding: 4px 11px; border-radius: 999px; }
+
+  /* About "read more" toggle */
+  .about-more { overflow: hidden; }
+  .read-more {
+    display: inline-block; margin-top: 4px; padding: 0;
+    border: none; background: none; color: var(--accent);
+    font-size: 15px; font-family: var(--sans); cursor: pointer;
+  }
+  .read-more:hover { text-decoration: underline; }
 
   /* Publications */
   .pub { padding: 14px 0; border-bottom: 1px solid var(--line); }
@@ -165,43 +174,56 @@
       political economy, and applied econometrics — currently in the Chief Economist Unit of
       DG BUDG, and teaching the political economy of the EU budget at the Hertie School.
     </p>
-    <p>
-      At the European Commission I work in the Chief Economist team of DG BUDG, strengthening the
-      econometric evidence base on the EU budget together with the Joint Research Centre to inform
-      decision-makers ahead of the next Multiannual Financial Framework (MFF). Previously, in the
-      Ukraine Directorate of DG ENEST, I coordinated the G7+ Energy Group for Ukraine, led economic
-      analysis on energy-sector state-owned enterprises, the impact of CBAM on Ukraine's industry,
-      and public debt and inflation, and was responsible for the energy and climate reforms of the
-      Ukraine Facility as well as the Rapid Damage and Needs Assessment with the World Bank. Before
-      that, I worked on the Recovery and Resilience Facility (RRF) in the Secretariat General,
-      handling the country plans of Estonia and Belgium and coordinating REPowerEU negotiations.
-    </p>
-    <p>
-      Alongside the Commission, I teach a graduate seminar at the Hertie School on the political
-      economy of common debt in the EU, the future of the MFF, and diverging productivity regimes
-      across the Union — co-taught with Johannes Lindner of the Jacques Delors Centre. I hold a
-      dual master's degree from the London School of Economics (MPA) and the Hertie School (MPP),
-      and I am an alumnus and fellow of the Friedrich Ebert Foundation.
-    </p>
-    <div class="chips">
-      <span class="chip">EU budget &amp; MFF</span>
-      <span class="chip">Common debt &amp; EU bonds</span>
-      <span class="chip">European Monetary Union</span>
-      <span class="chip">Fiscal policy</span>
-      <span class="chip">Energy &amp; climate policy</span>
-      <span class="chip">Econometrics &amp; data science</span>
+    <div id="aboutMore" class="about-more" hidden>
+      <p>
+        At the European Commission I work in the Chief Economist team of DG BUDG, strengthening the
+        econometric evidence base on the EU budget together with the Joint Research Centre to inform
+        decision-makers ahead of the next Multiannual Financial Framework (MFF). Previously, in the
+        Ukraine Directorate of DG ENEST, I coordinated the G7+ Energy Group for Ukraine, led economic
+        analysis on energy-sector state-owned enterprises, the impact of CBAM on Ukraine's industry,
+        and public debt and inflation, and was responsible for the energy and climate reforms of the
+        Ukraine Facility as well as the Rapid Damage and Needs Assessment with the World Bank. Before
+        that, I worked on the Recovery and Resilience Facility (RRF) in the Secretariat General,
+        handling the country plans of Estonia and Belgium and coordinating REPowerEU negotiations.
+      </p>
+      <p>
+        Alongside the Commission, I teach a graduate seminar at the Hertie School on the political
+        economy of common debt in the EU, the future of the MFF, and diverging productivity regimes
+        across the Union — co-taught with Johannes Lindner of the Jacques Delors Centre. I hold a
+        dual master's degree from the London School of Economics (MPA) and the Hertie School (MPP),
+        and I am an alumnus and fellow of the Friedrich Ebert Foundation.
+      </p>
+      <div class="chips">
+        <span class="chip">EU budget &amp; MFF</span>
+        <span class="chip">Common debt &amp; EU bonds</span>
+        <span class="chip">European Monetary Union</span>
+        <span class="chip">Fiscal policy</span>
+        <span class="chip">Energy &amp; climate policy</span>
+        <span class="chip">Econometrics &amp; data science</span>
+      </div>
     </div>
+    <button class="read-more" id="aboutToggle" aria-expanded="false" aria-controls="aboutMore">Read more →</button>
   </section>
 
   <!-- PUBLICATIONS -->
   <section id="publications">
     <h2>Publications</h2>
+
+    <h3 class="sub">Academic Publications</h3>
     <div class="pub">
       <div class="title">EU Budget: The Crowd-In Effects</div>
       <div class="meta">Di Pietro, F., Haustein, E., Conte, A., D'Adamo, G. &amp; Winterhager, V. · <span class="venue">JRC Working Papers on Territorial Modelling and Analysis, No 06/2026, European Commission</span> · June 2026.</div>
       <div class="tags"><span class="tag">working paper</span><span class="tag">EU budget</span><span class="tag">RRF &amp; ESIF</span></div>
       <div><a href="https://publications.jrc.ec.europa.eu/repository/handle/JRC147281" target="_blank" rel="noopener">JRC Repository</a></div>
     </div>
+    <div class="pub">
+      <div class="title">Revisiting Dominance Indicators: Comparing Revenue-Based and Market Capitalization-Based Indicators</div>
+      <div class="meta">Hagemann, F., Winterhager, V. &amp; Baum, L. · <span class="venue">Working paper</span> · 2023.</div>
+      <div class="tags"><span class="tag">working paper</span><span class="tag">antitrust</span><span class="tag">market concentration</span><span class="tag">HHI</span></div>
+      <div><a href="assets/dominance-indicators.pdf" target="_blank" rel="noopener">PDF</a></div>
+    </div>
+
+    <h3 class="sub">Policy Papers</h3>
     <div class="pub">
       <div class="title">Fifth Rapid Damage and Needs Assessment (RDNA 5)</div>
       <div class="meta"><span class="venue">World Bank &amp; European Commission</span> · March 2026.</div>
@@ -301,7 +323,7 @@
   <section id="contact">
     <h2>Contact</h2>
     <p>I'm based in Brussels. Best reached by email at
-    <a href="mailto:vincentwinterhager@gmail.com">vincentwinterhager@gmail.com</a>, or connect with me on
+    <a href="mailto:vwinterhager@pm.me">vwinterhager@pm.me</a>, or connect with me on
     <a href="https://www.linkedin.com/in/vincent-winterhager-7741a8aa/" target="_blank" rel="noopener">LinkedIn</a>.
     For talks, teaching, or collaboration, a short note about the topic and timeframe is most helpful.</p>
   </section>
@@ -318,6 +340,15 @@
   btn.addEventListener('click', () => {
     const root = document.documentElement;
     root.setAttribute('data-theme', root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+  });
+
+  const aboutToggle = document.getElementById('aboutToggle');
+  const aboutMore = document.getElementById('aboutMore');
+  aboutToggle.addEventListener('click', () => {
+    const expanded = aboutToggle.getAttribute('aria-expanded') === 'true';
+    aboutMore.hidden = expanded;
+    aboutToggle.setAttribute('aria-expanded', String(!expanded));
+    aboutToggle.textContent = expanded ? 'Read more →' : 'Show less ←';
   });
 </script>
 </body>
