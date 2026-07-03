@@ -82,7 +82,8 @@
 
   /* Background network canvas */
   #bg-canvas { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
-  .page-content { position: relative; z-index: 1; background: var(--bg); }
+  .page-content { position: relative; z-index: 1; }
+  .page-content main, .page-content footer { background: var(--bg); }
 
   /* Intro (full-height hero) */
   .intro {
@@ -151,10 +152,23 @@
 
   /* Cards grid */
   .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-  .card { border: 1px solid var(--line); border-radius: 12px; padding: 18px; background: var(--bg-soft); }
+  .card { border: 1px solid var(--line); border-radius: 12px; overflow: hidden; background: var(--bg-soft); }
+  .card .card-body { padding: 18px; }
+  .card-thumb { display: block; width: 100%; aspect-ratio: 800 / 213; object-fit: cover; background: var(--accent-soft); }
   .card h3 { margin: 0 0 6px; font-size: 17px; }
   .card .meta { color: var(--muted); font-size: 14px; margin-bottom: 8px; }
   .card p { margin: 0; font-size: 15px; }
+
+  /* Portfolio grid */
+  .portfolio-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .portfolio-card {
+    display: block; border: 1px solid var(--line); border-radius: 12px; overflow: hidden;
+    background: var(--bg-soft); color: var(--text);
+  }
+  .portfolio-card:hover { text-decoration: none; border-color: var(--accent); }
+  .portfolio-card .card-body { padding: 14px 16px; }
+  .portfolio-card h3 { margin: 0; font-size: 16px; }
+  .portfolio-card .meta { color: var(--muted); font-size: 13px; margin-top: 2px; }
 
   /* Timeline (talks/teaching, CV) */
   .row { display: grid; grid-template-columns: 150px 1fr; gap: 16px; padding: 12px 0; border-bottom: 1px solid var(--line); }
@@ -177,6 +191,7 @@
     .intro h1 { font-size: 34px; }
     .about-grid { grid-template-columns: 1fr; text-align: center; justify-items: center; }
     .grid { grid-template-columns: 1fr; }
+    .portfolio-grid { grid-template-columns: 1fr; }
     .row { grid-template-columns: 1fr; gap: 2px; }
     .hamburger { display: block; }
     .nav-links {
@@ -200,6 +215,7 @@
       <a href="#publications">Publications</a>
       <a href="#talks">Teaching</a>
       <a href="#projects">Projects</a>
+      <a href="#portfolio">Portfolio</a>
       <a href="#cv">CV</a>
       <a href="#contact">Contact</a>
     </nav>
@@ -333,17 +349,58 @@
     <h2>Projects &amp; Initiatives</h2>
     <div class="grid">
       <div class="card">
-        <h3><a href="https://friendsofmedyka.com" target="_blank" rel="noopener">Friends of Medyka</a></h3>
-        <div class="meta">Co-founder · 2022</div>
-        <p>An NGO supporting refugees at the Polish–Ukrainian border, organising shelter logistics
-        and onward transport to Western Europe.</p>
+        <img class="card-thumb" src="assets/portfolio/friendsofmedyka.jpg" alt="Friends of Medyka website" loading="lazy" />
+        <div class="card-body">
+          <h3><a href="https://friendsofmedyka.com" target="_blank" rel="noopener">Friends of Medyka</a></h3>
+          <div class="meta">Co-founder · 2022</div>
+          <p>An NGO supporting refugees at the Polish–Ukrainian border, organising shelter logistics
+          and onward transport to Western Europe.</p>
+        </div>
       </div>
       <div class="card">
-        <h3><a href="https://hackingcorona.de/" target="_blank" rel="noopener">#HackingCorona</a></h3>
-        <div class="meta">Founder · 2020</div>
-        <p>A civic-tech campaign mobilising individuals, companies, and researchers to donate spare
-        computing power to Folding@Home, accelerating COVID-19 protein research.</p>
+        <img class="card-thumb" src="assets/portfolio/hackingcorona.jpg" alt="#HackingCorona website" loading="lazy" />
+        <div class="card-body">
+          <h3><a href="https://hackingcorona.de/" target="_blank" rel="noopener">#HackingCorona</a></h3>
+          <div class="meta">Founder · 2020</div>
+          <p>A civic-tech campaign mobilising individuals, companies, and researchers to donate spare
+          computing power to Folding@Home, accelerating COVID-19 protein research.</p>
+        </div>
       </div>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO -->
+  <section id="portfolio">
+    <h2>Portfolio</h2>
+    <div class="portfolio-grid">
+      <a class="portfolio-card" href="https://friendsofmedyka.com" target="_blank" rel="noopener">
+        <img class="card-thumb" src="assets/portfolio/friendsofmedyka.jpg" alt="Friends of Medyka website" loading="lazy" />
+        <div class="card-body">
+          <h3>Friends of Medyka</h3>
+          <div class="meta">friendsofmedyka.com</div>
+        </div>
+      </a>
+      <a class="portfolio-card" href="https://hackingcorona.de/" target="_blank" rel="noopener">
+        <img class="card-thumb" src="assets/portfolio/hackingcorona.jpg" alt="#HackingCorona website" loading="lazy" />
+        <div class="card-body">
+          <h3>#HackingCorona</h3>
+          <div class="meta">hackingcorona.de</div>
+        </div>
+      </a>
+      <a class="portfolio-card" href="https://lucilius-interim.com/" target="_blank" rel="noopener">
+        <img class="card-thumb" src="assets/portfolio/lucilius-interim.jpg" alt="Lucilius Interim website" loading="lazy" />
+        <div class="card-body">
+          <h3>Lucilius Interim</h3>
+          <div class="meta">lucilius-interim.com</div>
+        </div>
+      </a>
+      <a class="portfolio-card" href="https://liftukraine.org/" target="_blank" rel="noopener">
+        <img class="card-thumb" src="assets/portfolio/liftukraine.jpg" alt="#LiftUkraine website" loading="lazy" />
+        <div class="card-body">
+          <h3>#LiftUkraine</h3>
+          <div class="meta">liftukraine.org</div>
+        </div>
+      </a>
     </div>
   </section>
 
