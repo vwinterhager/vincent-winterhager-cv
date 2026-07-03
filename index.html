@@ -154,7 +154,11 @@
   .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
   .card { border: 1px solid var(--line); border-radius: 12px; overflow: hidden; background: var(--bg-soft); }
   .card .card-body { padding: 18px; }
-  .card-thumb { display: block; width: 100%; aspect-ratio: 800 / 213; object-fit: cover; background: var(--accent-soft); }
+  .card-thumb {
+    display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; background: var(--accent-soft);
+    filter: grayscale(100%); transition: filter 0.35s ease;
+  }
+  .card:hover .card-thumb, .portfolio-card:hover .card-thumb { filter: grayscale(0%); }
   .card h3 { margin: 0 0 6px; font-size: 17px; }
   .card .meta { color: var(--muted); font-size: 14px; margin-bottom: 8px; }
   .card p { margin: 0; font-size: 15px; }
