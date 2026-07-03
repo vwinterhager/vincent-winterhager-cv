@@ -1,0 +1,159 @@
+\documentclass[11pt,a4paper]{article}
+
+% ---------- Packages ----------
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{amssymb}
+\usepackage[scaled=0.92]{helvet}   % crisp sans for headings; body stays serif
+\usepackage{microtype}
+\usepackage[a4paper,top=1.9cm,bottom=1.9cm,left=2.1cm,right=2.1cm]{geometry}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{tabularx}
+\usepackage{hyperref}
+
+% ---------- Colours ----------
+\definecolor{accent}{HTML}{1F4E79}
+\definecolor{rule}{HTML}{C9D3DE}
+\definecolor{muted}{HTML}{5B6776}
+
+\hypersetup{colorlinks=true, urlcolor=accent, linkcolor=accent, pdftitle={Vincent Winterhager -- Curriculum Vitae}, pdfauthor={Vincent Winterhager}}
+
+% ---------- Section formatting ----------
+\titleformat{\section}
+  {\sffamily\large\bfseries\color{accent}}
+  {}{0em}{}[\vspace{2pt}{\color{rule}\titlerule[1pt]}\vspace{-2pt}]
+\titlespacing*{\section}{0pt}{12pt}{6pt}
+
+% ---------- Entry macro ----------
+% \entry{dates}{title}{org / detail}
+\newcommand{\entry}[3]{%
+  \noindent\begin{tabularx}{\linewidth}{@{}p{3.3cm}@{\hspace{0.5em}}X@{}}
+    {\small\color{muted} #1} & {\textbf{#2}}\,\,{\small\color{muted} #3} \\
+  \end{tabularx}%
+}
+
+% Tight bullet list
+\newlist{tasks}{itemize}{1}
+\setlist[tasks]{leftmargin=3.95cm, label=\textcolor{accent}{\scriptsize$\blacktriangleright$}, itemsep=1pt, topsep=2pt, parsep=0pt}
+
+\setlength{\parindent}{0pt}
+\pagestyle{empty}
+
+\begin{document}
+
+% =================== HEADER ===================
+{\sffamily\Huge\bfseries Vincent Winterhager}\\[4pt]
+{\color{muted}\normalsize Policy Officer, Chief Economist Unit (DG~BUDG), European Commission \;$\cdot$\; Lecturer, Hertie School}\\[6pt]
+{\small
+Brussels, Belgium \quad$\cdot$\quad
+\href{mailto:vincentwinterhager@gmail.com}{vincentwinterhager@gmail.com} \quad$\cdot$\quad
+\href{https://www.linkedin.com/in/vincent-winterhager-7741a8aa/}{linkedin.com/in/vincent-winterhager}
+}
+\vspace{4pt}
+{\color{rule}\hrule height 1pt}
+\vspace{2pt}
+
+% =================== PROFILE ===================
+\section*{}
+\vspace{-18pt}
+\section{Profile}
+Economist and policy officer working at the intersection of European fiscal policy, political economy, and applied econometrics. Current focus on the EU budget and the next Multiannual Financial Framework (MFF) in the Chief Economist Unit of DG~BUDG, alongside graduate teaching on the political economy of common debt at the Hertie School.
+
+\vspace{2pt}
+{\small\textit{Interests:} EU budget \& MFF \,\textbullet\, common debt \& EU bonds \,\textbullet\, European Monetary Union \,\textbullet\, fiscal policy \,\textbullet\, energy \& climate policy \,\textbullet\, econometrics \& data science.}
+
+% =================== EXPERIENCE ===================
+\section{Experience}
+
+\entry{Feb 2026 -- present}{Policy Officer --- Chief Economist Unit (DG BUDG)}{European Commission, Brussels}
+\begin{tasks}
+  \item Strengthening the econometric evidence base on the EU budget together with the Joint Research Centre.
+  \item Informing decision-makers on the design of the next Multiannual Financial Framework (MFF).
+\end{tasks}
+
+\entry{Apr 2024 -- Feb 2026}{Policy Officer --- Ukraine Directorate (DG ENEST)}{European Commission, Economic Analysis Unit}
+\begin{tasks}
+  \item Coordinated the G7+ Energy Group for Ukraine.
+  \item Economic analysis of energy-sector state-owned enterprises, the impact of CBAM on Ukrainian industry, and public debt, inflation and budgetary needs.
+  \item Responsible for the energy and climate reforms of the Ukraine Facility (ETS, Electricity Integration Package, TSO/DSO reform).
+  \item Led the Ukraine Rapid Damage and Needs Assessment (RDNA) jointly with the World Bank.
+\end{tasks}
+
+\entry{Apr 2023 -- Apr 2024}{Policy Officer --- Recovery and Resilience Facility (RRF)}{European Commission, Secretariat-General}
+\begin{tasks}
+  \item Focus on energy and climate investments; responsible for the national plans of Estonia and Belgium.
+  \item Coordinated REPowerEU negotiations with Member States.
+\end{tasks}
+
+\entry{Oct 2022 -- Feb 2023}{Blue Book Trainee --- Recovery and Resilience Facility}{European Commission, Secretariat-General}
+
+\entry{Feb 2025 -- present}{Lecturer (part-time)}{Hertie School, Berlin}
+\begin{tasks}
+  \item Graduate seminar on the political economy of common debt in the EU, the future of the MFF, and diverging productivity regimes; co-taught with Johannes Lindner (Jacques Delors Centre).
+\end{tasks}
+
+\entry{Jul 2022 -- Sep 2022}{Visiting Associate, Data Analytics}{GovMind, Berlin}
+\begin{tasks}
+  \item Integrated EU public-procurement data (TED) via API and R into internal analytics products.
+\end{tasks}
+
+\entry{prior}{Research \& consulting roles}{OECD \,\textbullet\, GIZ \,\textbullet\, PD --- Berater der \"offentlichen Hand}
+
+\entry{since 2014}{Founder --- WIN-IT Webdesign \& IT-Beratung}{Self-employed}
+\begin{tasks}
+  \item Web development and IT project planning for SMEs, civil-society organisations and entrepreneurs.
+\end{tasks}
+
+% =================== EDUCATION ===================
+\section{Education}
+
+\entry{2021 -- 2022}{MPA, London School of Economics (LSE)}{Dual degree with the Hertie School}
+\begin{tasks}
+  \item Econometrics (DiD, IV, RDD, RCTs, OLS, synthetic control), labour economics, economics of European monetary integration, applied machine learning.
+  \item Capstone practice project with the EBRD (awarded to one student of the Hertie cohort).
+\end{tasks}
+
+\entry{2020 -- 2021}{MPP, Hertie School \,\textnormal{\small(final grade 1.4)}}{Dual degree with LSE --- Policy Analysis concentration}
+\begin{tasks}
+  \item International political economy and competition policy; advanced statistics.
+  \item Project course with DG Competition on detecting market dominance in the digital sector; final paper selected for publication.
+\end{tasks}
+
+% =================== PUBLICATIONS ===================
+\section{Publications}
+\begin{tasks}
+  \item Winterhager, V., et al. (2026). \textit{Fifth Rapid Damage and Needs Assessment (RDNA~5)}. World Bank \& European Commission. \href{https://documents1.worldbank.org/curated/en/099022026094036395/pdf/P514499-22f93f3a-4278-42bc-b907-db9553d12069.pdf}{[PDF]}
+  \item Winterhager, V., et al. (2023). \textit{Reshaping Decentralised Development Co-operation in Germany}. OECD. \href{https://www.oecd.org/content/dam/oecd/en/publications/reports/2023/04/reshaping-decentralised-development-co-operation-in-germany_2feec761/afedb776-en.pdf}{[PDF]}
+\end{tasks}
+
+% =================== TEACHING ===================
+\section{Teaching}
+\entry{since 2025}{The Political Economy of the EU Budget \& Common Debt}{Hertie School --- MPP graduate seminar}
+\entry{ongoing}{Lectures on economic policy}{Friedrich Ebert Foundation --- EU fiscal rules, EMU, climate \& fiscal policy}
+
+% =================== AWARDS ===================
+\section{Awards, Fellowships \& Certificates}
+\entry{2021}{Fellowship of the Friedrich Ebert Foundation}{Full scholarship for studies at the Hertie School and LSE}
+\entry{2025}{Financing and Investing in Infrastructure}{Universit\`a Bocconi --- certificate}
+\entry{2020}{McKinsey Firsthand Programme}{}
+
+% =================== SERVICE ===================
+\section{Service}
+\entry{2022}{Co-Founder --- Friends of Medyka}{NGO supporting refugees at the Polish--Ukrainian border}
+\entry{since 2021}{Student representative --- Friedrich Ebert Foundation}{London, Oxford \& Cambridge}
+
+% =================== SKILLS ===================
+\section{Skills}
+\begin{tabularx}{\linewidth}{@{}p{3.3cm}@{\hspace{0.5em}}X@{}}
+{\small\color{muted} Econometrics} & DiD, IV, RDD, RCTs, OLS, synthetic control, calibration \\[2pt]
+{\small\color{muted} Programming}   & R, data science, applied machine learning \\[2pt]
+{\small\color{muted} Languages}     & German (native), English (fluent) \\
+\end{tabularx}
+
+\vfill
+{\footnotesize\color{muted} References available on request. \hfill Last updated \today.}
+
+\end{document}
