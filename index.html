@@ -306,7 +306,7 @@
 
   <!-- TALKS & TEACHING -->
   <section id="talks">
-    <h2>Teaching &amp; Talks</h2>
+    <h2>Teaching</h2>
     <div class="row">
       <div class="when">Hertie School<br/>since Feb 2025</div>
       <div class="what">
@@ -428,7 +428,20 @@
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const NODE_COUNT = 70;
     const LINK_DIST = 130;
+    const HOVER_RADIUS = 110;
+    const HOVER_STRENGTH = 1.4;
+    const HOVER_FRICTION = 0.92;
     let w, h, nodes, rgb;
+    const mouse = { x: 0, y: 0, active: false };
+
+    window.addEventListener('mousemove', (e) => {
+      mouse.x = e.clientX;
+      mouse.y = e.clientY;
+      mouse.active = true;
+    });
+    window.addEventListener('mouseout', (e) => {
+      if (!e.relatedTarget) mouse.active = false;
+    });
 
     function particleRgb() {
       return getComputedStyle(document.documentElement).getPropertyValue('--particle-rgb').trim();
@@ -445,14 +458,28 @@
         y: Math.random() * h,
         vx: reduceMotion ? 0 : (Math.random() - 0.5) * 0.25,
         vy: reduceMotion ? 0 : (Math.random() - 0.5) * 0.25,
+        ex: 0,
+        ey: 0,
       }));
     }
 
     function draw() {
       ctx.clearRect(0, 0, w, h);
       for (const n of nodes) {
-        n.x += n.vx;
-        n.y += n.vy;
+        if (!reduceMotion && mouse.active) {
+          const dx = n.x - mouse.x;
+          const dy = n.y - mouse.y;
+          const dist = Math.hypot(dx, dy);
+          if (dist < HOVER_RADIUS && dist > 0.01) {
+            const force = (1 - dist / HOVER_RADIUS) * HOVER_STRENGTH;
+            n.ex += (dx / dist) * force;
+            n.ey += (dy / dist) * force;
+          }
+        }
+        n.ex *= HOVER_FRICTION;
+        n.ey *= HOVER_FRICTION;
+        n.x += n.vx + n.ex;
+        n.y += n.vy + n.ey;
         if (n.x < 0 || n.x > w) n.vx *= -1;
         if (n.y < 0 || n.y > h) n.vy *= -1;
         n.x = Math.min(Math.max(n.x, 0), w);
