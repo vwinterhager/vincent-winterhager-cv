@@ -66,13 +66,18 @@
     border-bottom: 1px solid var(--line);
   }
   .nav-inner { display: flex; align-items: center; gap: 18px; height: 60px; }
-  .nav-links { display: flex; gap: 20px; flex-wrap: wrap; }
+  .nav-links { flex: 1; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
   .nav-links a { color: var(--muted); font-size: 15px; }
   .nav-links a:hover { color: var(--accent); text-decoration: none; }
   .toggle {
-    margin-left: auto;
+    flex-shrink: 0;
     border: 1px solid var(--line); background: var(--bg-soft); color: var(--muted);
     border-radius: 999px; width: 34px; height: 34px; cursor: pointer; font-size: 15px;
+  }
+  .hamburger {
+    display: none; flex-shrink: 0;
+    border: 1px solid var(--line); background: var(--bg-soft); color: var(--text);
+    border-radius: 999px; width: 34px; height: 34px; cursor: pointer; font-size: 16px;
   }
 
   /* Background network canvas */
@@ -82,7 +87,7 @@
   /* Intro (full-height hero) */
   .intro {
     position: relative; z-index: 1;
-    min-height: 100vh; box-sizing: border-box;
+    min-height: calc(100vh - 60px); box-sizing: border-box;
     display: flex; flex-direction: column; align-items: center; justify-content: center;
     text-align: center; padding: 24px;
   }
@@ -173,14 +178,24 @@
     .about-grid { grid-template-columns: 1fr; text-align: center; justify-items: center; }
     .grid { grid-template-columns: 1fr; }
     .row { grid-template-columns: 1fr; gap: 2px; }
-    .nav-links { display: none; }
+    .hamburger { display: block; }
+    .nav-links {
+      display: none;
+      position: absolute; top: 60px; left: 0; right: 0;
+      flex-direction: column; gap: 0;
+      background: var(--bg); border-bottom: 1px solid var(--line);
+      padding: 8px 0;
+    }
+    .nav-links.open { display: flex; }
+    .nav-links a { padding: 12px 24px; text-align: center; }
   }
 </style>
 </head>
 <body>
 <header class="nav">
   <div class="wrap nav-inner">
-    <nav class="nav-links">
+    <button class="hamburger" id="menuToggle" aria-label="Menu" aria-expanded="false" aria-controls="navLinks">☰</button>
+    <nav class="nav-links" id="navLinks">
       <a href="#about">About</a>
       <a href="#publications">Publications</a>
       <a href="#talks">Teaching</a>
@@ -394,6 +409,17 @@
   document.getElementById('scrollIndicator').addEventListener('click', () => {
     document.querySelector('main').scrollIntoView({ behavior: 'smooth' });
   });
+
+  const menuToggle = document.getElementById('menuToggle');
+  const navLinks = document.getElementById('navLinks');
+  menuToggle.addEventListener('click', () => {
+    const open = navLinks.classList.toggle('open');
+    menuToggle.setAttribute('aria-expanded', String(open));
+  });
+  navLinks.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    menuToggle.setAttribute('aria-expanded', 'false');
+  }));
 
   // Background network animation
   (function () {
