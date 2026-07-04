@@ -128,10 +128,6 @@
   p.lead { font-size: 18px; }
   h3.sub { font-family: var(--serif); font-size: 18px; margin: 20px 0 6px; }
 
-  /* Interests chips */
-  .chips { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
-  .chip { font-size: 13px; color: var(--accent); background: var(--accent-soft); padding: 4px 11px; border-radius: 999px; }
-
   /* About "read more" toggle */
   .about-more { overflow: hidden; }
   .read-more {
@@ -234,7 +230,6 @@
     <p class="intro-role">Data Scientist and Economic Analyst · Chief Economist team (DG BUDG), European Commission<br/>Lecturer · Hertie School</p>
     <div class="links">
       <a href="mailto:vincentwinterhager@gmail.com"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-.5a.5.5 0 0 0-.5.5v.379l6.5 4.2 6.5-4.2V4a.5.5 0 0 0-.5-.5H2zM14.5 5.42l-6.14 3.964a.6.6 0 0 1-.72 0L1.5 5.42V12a.5.5 0 0 0 .5.5h12a.5.5 0 0 0 .5-.5V5.42z"/></svg>Email</a>
-      <a href="#cv"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M7.25 1a.75.75 0 0 1 1.5 0v6.19l1.72-1.72a.75.75 0 1 1 1.06 1.06l-3 3a.75.75 0 0 1-1.06 0l-3-3a.75.75 0 1 1 1.06-1.06L7.25 7.19V1z"/><path d="M2 10.75a.75.75 0 0 1 .75.75v2a.5.5 0 0 0 .5.5h9.5a.5.5 0 0 0 .5-.5v-2a.75.75 0 0 1 1.5 0v2A2 2 0 0 1 12.75 15h-9.5A2 2 0 0 1 1.25 13.5v-2a.75.75 0 0 1 .75-.75z"/></svg>CV</a>
       <a href="https://www.linkedin.com/in/vincent-winterhager-7741a8aa/" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M14.82 0H1.18C.53 0 0 .52 0 1.16v13.68C0 15.48.53 16 1.18 16h13.64c.65 0 1.18-.52 1.18-1.16V1.16C16 .52 15.47 0 14.82 0zM4.75 13.63H2.38V6.14h2.37v7.49zM3.56 5.12a1.38 1.38 0 1 1 0-2.75 1.38 1.38 0 0 1 0 2.75zm10.07 8.51h-2.37V9.99c0-.87-.02-1.99-1.21-1.99-1.21 0-1.4.95-1.4 1.93v3.7H6.28V6.14h2.28v1.02h.03c.32-.6 1.09-1.23 2.24-1.23 2.4 0 2.84 1.58 2.84 3.63v4.07z"/></svg>LinkedIn</a>
       <a href="https://github.com/vwinterhager" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>GitHub</a>
       <a href="https://www.hertie-school.org/en/research/faculty-and-researchers/profile/person/winterhager" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1 0 5l8 4 6.5-3.25V11h1.5V5L8 1zM3.5 8.09v3.41c0 1.38 2.02 2.5 4.5 2.5s4.5-1.12 4.5-2.5V8.09L8 10.5 3.5 8.09z"/></svg>Hertie profile</a>
@@ -258,6 +253,9 @@
           and applied econometrics — currently I work in the Chief Economist Unit of DG BUDG, and
           teaching the political economy of the EU budget at the Hertie School.
         </p>
+        <p class="lead">
+          I built this website together with Claude Code. All views expressed here are my own.
+        </p>
         <div id="aboutMore" class="about-more" hidden>
           <p>
             At the European Commission I work in the Chief Economist team of DG BUDG, strengthening the
@@ -273,18 +271,12 @@
           <p>
             Alongside the Commission, I teach a graduate seminar at the Hertie School on the political
             economy of common debt in the EU, the future of the MFF, and diverging productivity regimes
-            across the Union — co-taught with Johannes Lindner of the Jacques Delors Centre. I hold a
-            dual master's degree from the London School of Economics (MPA) and the Hertie School (MPP),
-            and I am an alumnus and fellow of the Friedrich Ebert Foundation.
+            across the Union — co-taught with Johannes Lindner of the Jacques Delors Centre. This class
+            combines policy making with data science, namely by deploying econometrics to topics such as
+            the common issuance of debt. I hold a dual master's degree from the London School of
+            Economics (MPA) and the Hertie School (MPP), and I am an alumnus and fellow of the Friedrich
+            Ebert Foundation.
           </p>
-          <div class="chips">
-            <span class="chip">EU budget &amp; MFF</span>
-            <span class="chip">Common debt &amp; EU bonds</span>
-            <span class="chip">European Monetary Union</span>
-            <span class="chip">Fiscal policy</span>
-            <span class="chip">Energy &amp; climate policy</span>
-            <span class="chip">Econometrics &amp; data science</span>
-          </div>
         </div>
         <button class="read-more" id="aboutToggle" aria-expanded="false" aria-controls="aboutMore">Read more →</button>
       </div>
@@ -300,13 +292,13 @@
       <div class="title">EU Budget: The Crowd-In Effects</div>
       <div class="meta">Di Pietro, F., Haustein, E., Conte, A., D'Adamo, G. &amp; Winterhager, V. · <span class="venue">JRC Working Papers on Territorial Modelling and Analysis, No 06/2026, European Commission</span> · June 2026.</div>
       <div class="tags"><span class="tag">working paper</span><span class="tag">EU budget</span><span class="tag">RRF &amp; ESIF</span></div>
-      <div><a href="https://publications.jrc.ec.europa.eu/repository/handle/JRC147281" target="_blank" rel="noopener">JRC Repository</a></div>
+      <div><a class="btn" href="https://publications.jrc.ec.europa.eu/repository/handle/JRC147281" target="_blank" rel="noopener">JRC Repository</a></div>
     </div>
     <div class="pub">
       <div class="title">Revisiting Dominance Indicators: Comparing Revenue-Based and Market Capitalization-Based Indicators</div>
       <div class="meta">Hagemann, F., Winterhager, V. &amp; Baum, L. · <span class="venue">Working paper</span> · 2023.</div>
       <div class="tags"><span class="tag">working paper</span><span class="tag">antitrust</span><span class="tag">market concentration</span><span class="tag">HHI</span></div>
-      <div><a href="assets/dominance-indicators.pdf" target="_blank" rel="noopener">PDF</a></div>
+      <div><a class="btn" href="assets/dominance-indicators.pdf" target="_blank" rel="noopener">PDF</a></div>
     </div>
 
     <h3 class="sub">Policy Papers</h3>
@@ -314,13 +306,13 @@
       <div class="title">Fifth Rapid Damage and Needs Assessment (RDNA 5)</div>
       <div class="meta"><span class="venue">World Bank &amp; European Commission</span> · March 2026.</div>
       <div class="tags"><span class="tag">policy report</span><span class="tag">Ukraine</span></div>
-      <div><a href="https://documents1.worldbank.org/curated/en/099022026094036395/pdf/P514499-22f93f3a-4278-42bc-b907-db9553d12069.pdf" target="_blank" rel="noopener">PDF</a></div>
+      <div><a class="btn" href="https://documents1.worldbank.org/curated/en/099022026094036395/pdf/P514499-22f93f3a-4278-42bc-b907-db9553d12069.pdf" target="_blank" rel="noopener">PDF</a></div>
     </div>
     <div class="pub">
       <div class="title">Reshaping Decentralised Development Co-operation in Germany</div>
       <div class="meta"><span class="venue">OECD</span> · November 2023.</div>
       <div class="tags"><span class="tag">OECD report</span></div>
-      <div><a href="https://www.oecd.org/content/dam/oecd/en/publications/reports/2023/04/reshaping-decentralised-development-co-operation-in-germany_2feec761/afedb776-en.pdf" target="_blank" rel="noopener">PDF</a></div>
+      <div><a class="btn" href="https://www.oecd.org/content/dam/oecd/en/publications/reports/2023/04/reshaping-decentralised-development-co-operation-in-germany_2feec761/afedb776-en.pdf" target="_blank" rel="noopener">PDF</a></div>
     </div>
   </section>
 
@@ -340,7 +332,7 @@
       <div class="when">Friedrich Ebert<br/>Foundation</div>
       <div class="what">
         <strong>Lectures &amp; seminars on economic policy</strong>
-        <span>EU fiscal rules, European Monetary Union, and the climate implications of fiscal policy</span>
+        <span>EU fiscal rules, industrial organisation, European Monetary Union, and the climate implications of fiscal policy</span>
       </div>
     </div>
     <p style="margin-top:8px;">
@@ -357,7 +349,7 @@
         <div class="card-body">
           <h3><a href="https://friendsofmedyka.com" target="_blank" rel="noopener">Friends of Medyka</a></h3>
           <div class="meta">Co-founder · 2022</div>
-          <p>An NGO supporting refugees at the Polish–Ukrainian border, organising shelter logistics
+          <p>An NGO supported refugees at the Polish–Ukrainian border, organising shelter logistics
           and onward transport to Western Europe.</p>
         </div>
       </div>
@@ -366,7 +358,7 @@
         <div class="card-body">
           <h3><a href="https://hackingcorona.de/" target="_blank" rel="noopener">#HackingCorona</a></h3>
           <div class="meta">Founder · 2020</div>
-          <p>A civic-tech campaign mobilising individuals, companies, and researchers to donate spare
+          <p>A civic-tech campaign mobilised individuals, companies, and researchers to donate spare
           computing power to Folding@Home, accelerating COVID-19 protein research.</p>
         </div>
       </div>
@@ -415,7 +407,7 @@
 
     <h3 class="sub">Experience</h3>
     <div class="row"><div class="when">Feb 2026 – present</div><div class="what"><strong>Policy Officer — Chief Economist Unit (DG BUDG)</strong><span>European Commission · Brussels</span><p>Strengthening the econometric evidence base on the EU budget with the Joint Research Centre, informing decision-makers for the next MFF.</p></div></div>
-    <div class="row"><div class="when">since 2010</div><div class="what"><strong>Founder — WIN-IT Webdesign &amp; IT-Beratung</strong><span>Self-employed</span></div></div>
+    <div class="row"><div class="when">since 2010</div><div class="what"><strong>Founder — WIN-IT Webdesign &amp; IT-Beratung</strong><span>Self-employed: I code websites and plan IT projects for SMEs, CSOs, entrepreneurs and individuals since ten years.</span></div></div>
     <div class="row"><div class="when">Apr 2024 – Feb 2026</div><div class="what"><strong>Policy Officer — Ukraine Directorate (DG ENEST)</strong><span>European Commission · Economic Analysis Unit</span><p>Coordinated the G7+ Energy Group for Ukraine; economic analysis on energy-sector SOEs, CBAM impact, public debt and inflation; led the energy &amp; climate reforms of the Ukraine Facility and the Ukraine RDNA with the World Bank.</p></div></div>
     <div class="row"><div class="when">Apr 2023 – Apr 2024</div><div class="what"><strong>Policy Officer — RRF / SG RECOVER</strong><span>European Commission · Secretariat General</span><p>Energy and climate investments; responsible for the country plans of Estonia and Belgium; coordinated REPowerEU negotiations with Member States.</p></div></div>
     <div class="row"><div class="when">Oct 2022 – Feb 2023</div><div class="what"><strong>Blue Book Trainee — RRF</strong><span>European Commission · Secretariat General</span></div></div>
@@ -432,7 +424,6 @@
     <div class="row"><div class="when">Nov 2025</div><div class="what"><strong>Financing and Investing in Infrastructure</strong><span>Università Bocconi (certificate)</span></div></div>
     <div class="row"><div class="when">Sep 2020</div><div class="what"><strong>McKinsey Firsthand Programme</strong><span></span></div></div>
 
-    <p style="margin-top:12px;"><a class="btn" href="assets/cv.pdf">⤓ Download full CV (PDF)</a></p>
   </section>
 
   <!-- CONTACT -->
@@ -440,14 +431,14 @@
     <h2>Contact</h2>
     <p>I'm based in Brussels. Best reached by email at
     <a href="mailto:vwinterhager@pm.me">vwinterhager@pm.me</a>, or connect with me on
-    <a href="https://www.linkedin.com/in/vincent-winterhager-7741a8aa/" target="_blank" rel="noopener">LinkedIn</a>.
-    For talks, teaching, or collaboration, a short note about the topic and timeframe is most helpful.</p>
+    <a href="https://www.linkedin.com/in/vincent-winterhager-7741a8aa/" target="_blank" rel="noopener">LinkedIn</a>.</p>
   </section>
 
 </main>
 
 <footer class="wrap">
   © <span id="year"></span> Vincent Winterhager. Views expressed on this site are my own and do not represent those of the European Commission.
+  <div style="margin-top:8px;"><a href="imprint.html">Imprint</a> · <a href="privacy.html">Privacy Policy</a></div>
 </footer>
 </div>
 

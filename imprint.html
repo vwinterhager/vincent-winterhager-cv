@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Imprint — Vincent Winterhager</title>
+<meta name="robots" content="noindex" />
+<style>
+  @font-face {
+    font-family: "Open Sans";
+    font-style: normal;
+    font-weight: 300 800;
+    font-display: swap;
+    src: url("assets/fonts/open-sans-latin.woff2") format("woff2");
+  }
+  :root {
+    --bg: #ffffff;
+    --bg-soft: #f6f7f9;
+    --text: #1c2530;
+    --muted: #5b6776;
+    --line: #e4e8ed;
+    --accent: #1f4e79;
+    --max: 720px;
+    --sans: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  [data-theme="dark"] {
+    --bg: #11151a;
+    --bg-soft: #181d24;
+    --text: #e6e9ee;
+    --muted: #9aa6b3;
+    --line: #262d36;
+    --accent: #7eb6e6;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; font-family: var(--sans); color: var(--text); background: var(--bg);
+    line-height: 1.65; font-size: 17px; -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 48px 24px 60px; }
+  .back { display: inline-block; margin-bottom: 24px; color: var(--muted); font-size: 15px; }
+  h1 { font-size: 28px; margin: 0 0 24px; }
+  h2 { font-size: 18px; margin: 32px 0 8px; }
+  p { margin: 0 0 12px; }
+  .placeholder { color: var(--accent); background: color-mix(in srgb, var(--accent) 15%, transparent); padding: 1px 6px; border-radius: 4px; }
+  footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; }
+  footer a { margin-right: 4px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="index.html">← Back to site</a>
+  <h1>Imprint</h1>
+
+  <h2>Information according to Section 5 TMG / Art. 5 ECD</h2>
+  <p>
+    Vincent Winterhager<br />
+    <span class="placeholder">[Street and house number]</span><br />
+    <span class="placeholder">[Postal code and city]</span><br />
+    <span class="placeholder">[Country]</span>
+  </p>
+
+  <h2>Contact</h2>
+  <p>Email: <a href="mailto:vwinterhager@pm.me">vwinterhager@pm.me</a></p>
+
+  <h2>Responsible for content</h2>
+  <p>
+    Vincent Winterhager (address as above), responsible in accordance with Section 18(2) MStV.
+  </p>
+
+  <h2>Disclaimer</h2>
+  <p>
+    This is a personal website. Views expressed on it are my own and do not represent those of
+    the European Commission, the Hertie School, or any other organisation I am or have been
+    affiliated with.
+  </p>
+  <p>
+    Despite careful content control, I assume no liability for the content of external links.
+    The operators of linked pages are solely responsible for their content.
+  </p>
+
+  <footer>
+    <a href="index.html">Home</a> · <a href="privacy.html">Privacy Policy</a>
+  </footer>
+</div>
+</body>
+</html>

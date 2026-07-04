@@ -4,7 +4,7 @@
     {
       "name": "vincent-winterhager-cv",
       "runtimeExecutable": "python3",
-      "runtimeArgs": ["-m", "http.server", "8003", "--bind", "127.0.0.1"],
+      "runtimeArgs": ["-m", "http.server", "8003", "--directory", "/Users/vincentwinterhager/Documents/vincent-winterhager-cv", "--bind", "127.0.0.1"],
       "port": 8003
     }
   ]
