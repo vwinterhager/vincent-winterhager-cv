@@ -1,114 +1,54 @@
-# Vincent Winterhager — personal academic site
+# vwinterhager.github.io
 
-Two things are in this folder:
+Vincent Winterhager's personal site — live at **https://vwinterhager.github.io/**
 
-1. **`index.html`** — a working, self-contained prototype of your site. Double-click it to
-   open in any browser. No build step, no dependencies. It has all your sections (About,
-   Publications, Talks & Teaching, Writing, Projects, CV, Contact), a clean academic style,
-   and a dark-mode toggle (the ◐ button, top right). Edit the text directly — everything
-   marked *[edit: ...]* is a placeholder.
-2. **This README** — the runbook for standing up the real **Hugo Blox Academic CV**
-   version (the stack you chose), which needs internet access and so has to run on your
-   own machine, not in this session's sandbox.
+A single self-contained HTML site: no build step, no JS framework, no external runtime
+dependencies. Fonts, images, and PDFs are all bundled locally under `assets/`.
 
-Use the prototype as an instant preview / fallback, and follow the steps below for the
-production Hugo Blox site.
+## Structure
 
----
+- **`index.html`** — the whole site. Sections: full-height intro (name/title/links over an
+  animated, cursor-reactive network canvas background), About (photo + bio, "Read more"
+  toggle), Publications (Academic / Policy Papers), Teaching, Projects & Initiatives,
+  Curriculum Vitae, Contact. Dark/light theme toggle (default: dark).
+- **`imprint.html`** / **`privacy.html`** — legal pages, linked from the footer.
+  ⚠️ **`imprint.html` currently has no postal address filled in.** A name alone is not a
+  legally valid Impressum under German/EU law (a *ladungsfähige Anschrift* — a real address
+  where legal notices can be served — is required). Add it before treating the site as
+  fully compliant.
+- **`assets/`**
+  - `favicon.svg` — graduation-cap icon (Font Awesome Free, CC BY 4.0) on an accent-blue badge.
+  - `fonts/` — Open Sans, self-hosted (variable-weight woff2, Latin subset + italic).
+  - `profile.jpg`, `cv.pdf`, `dominance-indicators.pdf` — personal assets.
+  - `portfolio/` — screenshot thumbnails for the Projects & Initiatives cards (grayscale by
+    default, full color on hover): Friends of Medyka, #HackingCorona, Lucilius Interim,
+    #LiftUkraine. (There's also a commented-out **Portfolio** section in `index.html` with a
+    dedicated card grid for these four — currently disabled but left in place; search for
+    `PORTFOLIO (temporarily hidden` to re-enable it.)
+- **`cv_winterhager.tex`** — LaTeX source behind `assets/cv.pdf` (not otherwise wired into the site).
+- **`.claude/launch.json`** — local dev server config (see below).
 
-## A. Run the prototype (30 seconds)
-
-Just open `index.html`. To serve it like a real site (nicer for testing links):
-
-```bash
-cd this-folder
-python3 -m http.server 8000
-# then visit http://localhost:8000
-```
-
-To put the `VW` avatar circle to use, drop a photo at `assets/profile.jpg` and a
-`assets/cv.pdf` for the CV download button.
-
----
-
-## B. Stand up the Hugo Blox Academic CV site (your chosen stack)
-
-Prerequisites (one-time):
-
-- **Git** — you have it.
-- **Hugo *extended*** — required (the plain build won't work). macOS: `brew install hugo`.
-  Windows: `winget install Hugo.Hugo.Extended`. Then check: `hugo version` should show
-  `+extended`.
-- **Go** — needed because Hugo Blox is delivered as Hugo Modules. Install from
-  https://go.dev/dl/ and confirm with `go version`.
-
-### 1. Get the starter
-
-Open the template and click **“Use this template” → Create a new repository**:
-
-> https://github.com/HugoBlox/theme-academic-cv
-
-Then clone *your* new repo and run it:
+## Run locally
 
 ```bash
-git clone https://github.com/<your-username>/<your-repo>.git
-cd <your-repo>
-hugo server
-# open the http://localhost:1313 URL it prints
+cd vincent-winterhager-cv   # this folder — the GitHub repo itself is named vwinterhager.github.io
+python3 -m http.server 8003 --bind 127.0.0.1
+# then visit http://localhost:8003
 ```
 
-`hugo server` live-reloads as you edit — that's your real working local version.
+## Deployment
 
-> ⚠️ Version note: the project was renamed from **Wowchemy/Academic** to **Hugo Blox**.
-> Only follow docs at **https://docs.hugoblox.com** and ignore older "Wowchemy" tutorials —
-> mixing the two is the single most common source of setup errors.
+Hosted on **GitHub Pages**, served from the `main` branch root of the
+`vwinterhager/vwinterhager.github.io` repo (the special GitHub Pages "user site" repo name,
+which serves at the bare `https://vwinterhager.github.io/` domain with no path suffix).
+Pushing to `main` deploys automatically — no CI/build step needed since it's static HTML.
 
-### 2. Make it yours — the files that matter
+To take the site offline temporarily: make the repo private (GitHub Free doesn't serve Pages
+from private repos, so this fully deprovisions the public site). To bring it back: flip the
+repo back to public, then re-enable Pages if it doesn't reactivate on its own —
+`gh api -X POST repos/vwinterhager/vwinterhager.github.io/pages -f "source[branch]=main" -f "source[path]=/"`.
 
-| What | Where |
-|------|-------|
-| Name, role, social links, photo | `content/authors/admin/_index.md` + `avatar.jpg` |
-| Homepage sections shown & order | `content/_index.md` |
-| Site title, menu, colour theme | `config/_default/` (`params.yaml`, `menus.yaml`) |
-| Publications (auto from BibTeX) | `content/publication/` — or import a `.bib` |
-| Talks | `content/event/` |
-| Teaching / courses | add a `content/teaching/` section |
-| Blog posts | `content/post/` |
-| Projects | `content/project/` |
-| CV PDF download | `static/uploads/cv.pdf`, link it in the author file |
+## Analytics
 
-### 3. Import your publications (the big time-saver)
-
-Export a BibTeX file from Google Scholar / Zotero, then:
-
-```bash
-hugoblox import bibtex my-publications.bib
-# (older command name: `academic import`)
-```
-
-Each entry becomes a publication page with DOI, abstract, and a “Cite” button.
-
-### 4. Pick the clean-academic look
-
-In `config/_default/params.yaml` set a light, minimal theme (e.g. `theme: minimal`
-or `ocean`) and a serif heading font. Browse options in the HugoBlox docs under
-*Appearance*.
-
-### 5. Deploy for free
-
-With Git already in hand, easiest paths:
-
-- **GitHub Pages** — push to GitHub; enable Pages with a Hugo Actions workflow (the
-  starter often includes `.github/workflows/`).
-- **Cloudflare Pages / Netlify** — connect the repo, set build command `hugo --gc --minify`,
-  output dir `public`. Auto-deploys on every push.
-
-Point your custom domain at it when ready.
-
----
-
-## Reference links
-
-- Starter template: https://github.com/HugoBlox/theme-academic-cv
-- Docs: https://docs.hugoblox.com
-- Hugo Blox home: https://hugoblox.com
+None configured. No cookies, no tracking scripts — matches what `privacy.html` discloses.
+If that changes, update `privacy.html` accordingly.
